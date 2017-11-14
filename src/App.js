@@ -1,60 +1,37 @@
 import React, { Component } from 'react';
-import injectStyle from './injectStyle';
 
 import Stars from './components/Stars';
+import Mountains from './components/Mountains';
+import Navigation from './components/Navigation';
+import Home from './components/Home';
 import './App.css';
-import mountainsImg from './mountains.png';
-
-
-class Mountains extends Component {
-    constructor(props){
-      super(props);
-      this.state = {style: {transform: `translate(10vw,20vh)`}};
-      this.viewMove = this.viewMove.bind(this);
-      this.width = window.innerWidth;
-      this.height = window.innerHeight;
-      this.cx = 10;
-      this.cy = 20;
-    }
-
-    componentDidMount(){
-
-    }
-
-    viewMove(e){
-      let x = 10 - (e.pageX /this.width - 0.5)*8;
-      let y = 20 - (e.pageY /this.height - 0.5)*10;
-      let keyframesStyle= `
-        @-webkit-keyframes mountainsMove {
-          0%   { transform: translate(`+`${this.cx}vw,${this.cy}vh`+`)}
-          100% { transform:` + `translate(${x}vw,${y}vh)` + `}
-        }`;
-      injectStyle(keyframesStyle);
-      this.setState(prevState => (
-        { style: { transform: `translate(${this.cx}vw,${this.cy}vh)`, WebkitAnimation : '' } }
-      ));
-      setTimeout(()=>{
-        this.setState(prevState => (
-          { style: { WebkitAnimation: 'mountainsMove 10s cubic-bezier(.06,.22,0,.55) 1 forwards' } }
-        ));
-        this.cx = x;
-        this.cy = y;
-        }
-      ,20);
-    }
-
-    render() {
-      return (
-        <img id='mountains' style={this.state.style} src = {mountainsImg}/>
-      );
-    }
-}
 
 const mist = (
-  <img id='mist' src="http://www.refletcommunication.com/assets/images/mirror-slideshow/1440x810/insight-default-background.jpg"/>
+  <img id='mist' src="http://www.refletcommunication.com/assets/images/mirror-slideshow/1440x810/insight-default-background.jpg" alt=''/>
 )
 
+function ContentPicker(props) {
+  if(props.pageIndex === 0){
+    return (<Home/>);
+  }
+  else{
+    return (<p>Sorry, Still Working on it.</p>);
+  }
+}
+
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {pageIndex:0}
+    this.pageChange = this.pageChange.bind(this);
+  }
+
+  pageChange(index) {
+    this.setState(prevState => ({
+      pageIndex: index
+    }));
+  }
 
   render() {
     return (
@@ -65,9 +42,15 @@ class App extends Component {
         <Stars/>
         <Mountains ref="mountains"/>
         {mist}
+        <Navigation pageChange={this.pageChange}/>
+
+        <div id="contents">
+          <ContentPicker pageIndex={this.state.pageIndex}/>
+        </div>
       </div>
     );
   }
+
 }
 
 export default App;

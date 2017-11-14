@@ -6,7 +6,7 @@ class Stars extends Component {
     super(props);
     const width = window.innerWidth;
     const height = window.innerHeight;
-    this.state = { width: width*1.2, height: height*1.2, style: {transform: `translate(-10vw,-10vh)`}};
+    this.state = { width: width*1.1, height: height*1.1, style: {transform: `translate(-10vw,-10vh)`}};
     this.rint = 50;
     this.draw = this.draw.bind(this);
     this.viewMove = this.viewMove.bind(this);
@@ -35,9 +35,8 @@ class Stars extends Component {
   }
 
   viewMove(e){
-    let x = -10 - (e.pageX /this.state.width - 0.5)*5;
-    let y = -10 - (e.pageY /this.state.height - 0.5)*5;
-    console.log(x,y);
+    let x = -10 - (e.pageX /this.state.width - 0.5)*3;
+    let y = -10 - (e.pageY /this.state.height - 0.5)*3;
     this.setState(prevState => (
       { style: {transform: `translate(${x}vw,${y}vh)`}}
     ));

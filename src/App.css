@@ -2,11 +2,64 @@
 
 }
 
+h1{
+  font-size: 5rem;
+}
+h2{
+  font-size: 4rem;
+}
+h3{
+  font-size: 3rem;
+}
+h4{
+  font-size: 2rem;
+}
+h5{
+  font-size: 1.5rem;
+}
+h1, h2, h3, h4, h5{
+  margin: 0;
+}
+img{
+  user-drag: none; 
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+#contents{
+}
+
+.home{
+  position: absolute;
+  top:45vh;
+  left:50vw;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  width: 560px;
+}
+.middleStroke{
+  border-color:#1db954;
+  border-width: 1.5px;
+  border-style: solid;
+  margin: 5px auto;
+  width: 0;
+}
+
+.myName{
+  font-weight: 600;
+  /*height: 97px;*/
+}
+.shortIntro{
+  font-weight: 200;
+  /*height: 36px;*/
+}
+
 canvas{
   position: fixed;
   top: 0;
   left: 0;
-  /*transform: translate(-10vw,-10vh);*/
   z-index: 1;
 }
 
@@ -26,12 +79,18 @@ canvas{
   height: 100%;
   top:0;
   left:0;
-  opacity: .15;
+  opacity: .13;
   z-index: 2;
-  animation: mist 5s linear infinite alternate;
+  animation: mist 6s linear infinite alternate;
 }
 
 @keyframes mist {
-  from { opacity: .15}
-  to   { opacity: .25}
+  from { opacity: .13}
+  to   { opacity: .26}
+}
+
+.nav{
+  position: absolute;
+  z-index: 5;
+  /*background-color: transparent;*/
 }
