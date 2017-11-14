@@ -3,11 +3,15 @@ import React, { Component } from 'react';
 import Stars from './components/Stars';
 import Mountains from './components/Mountains';
 import Navigation from './components/Navigation';
+import Arrow from './components/Arrow';
 import Home from './components/Home';
+
 import './App.css';
+import mistImg from './assets/mist.jpg';
+
 
 const mist = (
-  <img id='mist' src="http://www.refletcommunication.com/assets/images/mirror-slideshow/1440x810/insight-default-background.jpg" alt=''/>
+  <img id='mist' src={mistImg} alt=''/>
 )
 
 function ContentPicker(props) {
@@ -15,7 +19,7 @@ function ContentPicker(props) {
     return (<Home/>);
   }
   else{
-    return (<p>Sorry, Still Working on it.</p>);
+    return (<p>Sorry, Still Working on it.<br/>pageIndex: {props.pageIndex}</p>);
   }
 }
 
@@ -25,12 +29,26 @@ class App extends Component {
     super(props);
     this.state = {pageIndex:0}
     this.pageChange = this.pageChange.bind(this);
+    this.nextprevPage = this.nextprevPage.bind(this);
   }
 
   pageChange(index) {
     this.setState(prevState => ({
       pageIndex: index
     }));
+  }
+
+  nextprevPage(str) {
+    if(str === "next" && this.state.pageIndex < 3){
+      this.setState(prevState => ({
+        pageIndex: prevState.pageIndex + 1
+      }));
+    }
+    else if(str === "prev" && this.state.pageIndex > 0){
+      this.setState(prevState => ({
+        pageIndex: prevState.pageIndex - 1
+      }));
+    }
   }
 
   render() {
@@ -43,6 +61,7 @@ class App extends Component {
         <Mountains ref="mountains"/>
         {mist}
         <Navigation pageChange={this.pageChange}/>
+        <Arrow nextprevPage={this.nextprevPage} pageIndex={this.state.pageIndex}/>
 
         <div id="contents">
           <ContentPicker pageIndex={this.state.pageIndex}/>

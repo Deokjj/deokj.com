@@ -43,7 +43,7 @@ class Mountains extends Component {
 
     render() {
       return (
-        <img id='mountains' style={this.state.style} src = {mountainsImg } alt=""/>
+        <img id='mountains' style={this.state.style} src = {mountainsImg} alt=""/>
       );
     }
 }
