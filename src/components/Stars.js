@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {VelocityComponent, velocityHelpers} from 'velocity-react';
 
 class Stars extends Component {
 
@@ -6,15 +7,34 @@ class Stars extends Component {
     super(props);
     const width = window.innerWidth;
     const height = window.innerHeight;
-    this.state = { width: width*1.1, height: height*1.1, style: {transform: `translate(-10vw,-10vh)`}};
     this.rint = 50;
+
+    let ani = velocityHelpers.registerEffect({
+      defaultDuration: 0,
+      calls: [
+        [{
+            translateX: '-10vw',
+            translateY:'-10vh'
+        }, 1, {
+            delay: 0,
+            easing: 'cubic-bezier(.75,0,.25,1)'
+        }]
+      ]
+    });
+
+    this.state = {
+      width: width*1.1,
+      height: height*1.1,
+      style: {transform: `translate(-10vw,-10vh)`},
+      animation: ani
+    };
+
     this.draw = this.draw.bind(this);
-    this.viewMove = this.viewMove.bind(this);
   }
 
   componentDidMount(){
     this.ctx = this.refs.canvas.getContext('2d');
-    const numOfStars = 60;
+    const numOfStars = 70;
     this.pxs = new Array(numOfStars);
     for(var i = 0; i < numOfStars; i++) {
   		this.pxs[i] = new this.Circle
@@ -34,27 +54,29 @@ class Stars extends Component {
   	}
   }
 
-  viewMove(e){
+  animation = (e) => {
     let x = -10 - (e.pageX /this.state.width - 0.5)*3;
     let y = -10 - (e.pageY /this.state.height - 0.5)*3;
-    this.setState(prevState => (
-      { style: {transform: `translate(${x}vw,${y}vh)`}}
-    ));
-    // let keyframesStyle= `
-    //   @-webkit-keyframes starsMove {
-    //     0%   { transform: translate(`+`-10vw,-10vh`+`)}
-    //     100% { transform:` + `translate(${x}vw,${y}vh)` + `}
-    //   }`;
-    // injectStyle(keyframesStyle);
-    // this.setState(prevState => (
-    //   { style: { transform: `translate(${this.cx}vw,${this.cy}vh)`, WebkitAnimation : '' } }
-    // ));
-    // setTimeout(()=>{
-    //   this.setState(prevState => (
-    //     { style: { WebkitAnimation: 'starsMove 10s cubic-bezier(.06,.22,0,.55) 1 forwards' } }
-    //   ));
-    //   }
-    // ,20);
+
+    let ani = velocityHelpers.registerEffect({
+      defaultDuration: 500,
+      calls: [
+        [{
+          translateX: x+ `vw`,
+          translateY: y+ `vh`
+        }, 1, {
+            delay: 20,
+            easing: 'cubic-bezier(.75,0,.25,1)'
+        }]
+      ]
+    });
+    new Promise(()=>{
+      this.setState(prevState => ({
+        animation: ani
+      }));
+    }).then(()=>{
+      this.refs.starsAni.runAnimation()
+    });
   }
 
   Circle(ctx, width, height, rint) {
@@ -112,7 +134,9 @@ class Stars extends Component {
 
   render() {
     return (
-      <canvas ref="canvas" style={this.state.style} width={this.state.width} height={this.state.height}/>
+      <VelocityComponent ref="starsAni" id='mountainWrap' animation={this.state.animation} interruptBehavior={'stop'} runOnMount={false}>
+        <canvas ref="canvas" style={this.state.style} width={this.state.width} height={this.state.height}/>
+      </VelocityComponent>
     );
   }
 }

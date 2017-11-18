@@ -1,49 +1,63 @@
 import React, { Component } from 'react';
 import mountainsImg from '../assets/mountains.png';
+import {VelocityComponent, velocityHelpers} from 'velocity-react';
 
 class Mountains extends Component {
     constructor(props){
       super(props);
-      this.state = {style: {transform: `translate(10vw,20vh)`}};
-      this.viewMove = this.viewMove.bind(this);
+
+      let ani = velocityHelpers.registerEffect({
+        defaultDuration: 0,
+        calls: [
+          [{
+              translateX: '10vw',
+              translateY:'20vh'
+          }, 1, {
+              delay: 0,
+              easing: 'cubic-bezier(.75,0,.25,1)'
+          }]
+        ]
+      });
+
+      this.state = {
+        animation: ani
+      };
       this.width = window.innerWidth;
       this.height = window.innerHeight;
-      this.cx = 10;
-      this.cy = 20;
     }
 
-    componentDidMount(){
-
-    }
-
-    viewMove(e){
+    animation = (e) => {
       let x = 10 - (e.pageX /this.width - 0.5)*8;
       let y = 20 - (e.pageY /this.height - 0.5)*10;
-      // let keyframesStyle= `
-      //   @-webkit-keyframes mountainsMove {
-      //     0%   { transform: translate(`+`${this.cx}vw,${this.cy}vh`+`)}
-      //     100% { transform:` + `translate(${x}vw,${y}vh)` + `}
-      //   }`;
-      // injectStyle(keyframesStyle);
-      // this.setState(prevState => (
-      //   { style: { transform: `translate(${this.cx}vw,${this.cy}vh)`, WebkitAnimation : '' } }
-      // ));
-      // setTimeout(()=>{
-      //   this.setState(prevState => (
-      //     { style: { WebkitAnimation: 'mountainsMove 10s cubic-bezier(.06,.22,0,.55) 1 forwards' } }
-      //   ));
-      //   this.cx = x;
-      //   this.cy = y;
-      //   }
-      // ,20);
-      this.setState(prevState => (
-        { style: {transform: `translate(${x}vw,${y}vh)`}}
-      ));
+
+      let ani = velocityHelpers.registerEffect({
+        defaultDuration: 600,
+        calls: [
+          [{
+            translateX: x+ `vw`,
+            translateY: y+ `vh`
+          }, 1, {
+              delay: 20,
+              easing: 'cubic-bezier(.75,0,.25,1)'
+          }]
+        ]
+      });
+      new Promise(()=>{
+        this.setState(prevState => ({
+          animation: ani
+        }));
+      }).then(()=>{
+        this.refs.mountainAni.runAnimation()
+      });
     }
+
+
 
     render() {
       return (
-        <img id='mountains' style={this.state.style} src = {mountainsImg} alt=""/>
+        <VelocityComponent ref="mountainAni" id='mountainWrap' animation={this.state.animation} interruptBehavior={'stop'} runOnMount={false}>
+          <img id='mountains' src = {mountainsImg} alt=""/>
+        </VelocityComponent>
       );
     }
 }

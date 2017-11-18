@@ -80,19 +80,19 @@
 }
   .is-fading-up:nth-child(1) {
     color:blue;
-    transition-delay:0.2s
+    transition-delay:.15s
   }
   .is-fading-up:nth-child(2) {
-    transition-delay:0.4s
+    transition-delay:.3s
   }
   .is-fading-up:nth-child(3) {
-    transition-delay:0.6s
+    transition-delay:.45s
   }
   .is-fading-up:nth-child(4) {
-    transition-delay:0.8s
+    transition-delay:.6s
   }
   .is-fading-up:nth-child(5) {
-    transition-delay:1s
+    transition-delay:.75s
   }
 
   .nav ul li a img{

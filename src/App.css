@@ -12,13 +12,16 @@ h3{
   font-size: 3rem;
 }
 h4{
-  font-size: 2rem;
+  font-size: 2.05rem;
 }
 h5{
   font-size: 1.5rem;
 }
 h1, h2, h3, h4, h5{
   margin: 0;
+}
+.highlight{
+  color: #1db954;
 }
 img{
   user-drag: none;
@@ -29,9 +32,15 @@ img{
   -ms-user-select: none;
 }
 #contents{
+  position: absolute;
+  z-index: 3;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
-.home{
+.nameLogo{
   position: absolute;
   top:45vh;
   left:50vw;
@@ -39,6 +48,8 @@ img{
   text-align: center;
   width: 560px;
 }
+
+
 .middleStroke{
   border-color:#1db954;
   border-width: 1.5px;
@@ -51,16 +62,85 @@ img{
   font-weight: 600;
   /*height: 97px;*/
 }
+.introBuffer{
+  margin-top: 5vh;
+}
 .shortIntro{
   font-weight: 200;
   /*height: 36px;*/
 }
+
+.intro{
+  position: absolute;
+  top:50vh;
+  left:50vw;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  width: 100vw;
+  padding: 2.5vw;
+  box-sizing: border-box;
+  font-weight: 100;
+}
+
+.introContents{
+  margin-top: 3vh;
+  line-height: 1.5em;
+  font-weight: 100;
+}
+
+.techIntro{
+  margin-top: 5vh;
+  font-weight: 100;
+}
+
+.flex{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.marginBox{
+  box-sizing: border-box;
+  padding-top: 18px;
+}
+
+.flexChildren{
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 8vw;
+  max-width: 140px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.flexChildren img{
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+
+.caption{
+  opacity: 0;
+  transition: opacity 300ms ease;
+  margin-top: 10px;
+}
+
+.flexChildren:hover .caption {
+  opacity: 1
+}
+
 
 canvas{
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
+  transform: translate(-10vw,-10vh);
 }
 
 #mountains{
@@ -71,6 +151,7 @@ canvas{
   left:-20vw;
   display: block;
   z-index: 3;
+  transform: translate(10vw,20vh);
 }
 
 #mist{
@@ -92,4 +173,46 @@ canvas{
 .nav{
   position: absolute;
   z-index: 5;
+}
+
+@media (max-width: 580px) {
+  .nameLogo{
+    width: 360px;
+  }
+  h1{
+    font-size: 3.2rem;
+  }
+  h2{
+    font-size: 2.5rem;
+  }
+  h3{
+    font-size: 1.7rem;
+  }
+  h4{
+    font-size: 1.3rem;
+  }
+  h5{
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .nameLogo{
+    width: 300px;
+  }
+  h1{
+    font-size: 2.7rem;
+  }
+  h2{
+    font-size: 2rem;
+  }
+  h3{
+    font-size: 1.5rem;
+  }
+  h4{
+    font-size: 1.1rem;
+  }
+  h5{
+    font-size: .8rem;
+  }
 }

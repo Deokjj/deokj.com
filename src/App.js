@@ -1,27 +1,16 @@
 import React, { Component } from 'react';
+import 'velocity-animate';
+import 'velocity-animate/velocity.ui';
 
 import Stars from './components/Stars';
 import Mountains from './components/Mountains';
 import Navigation from './components/Navigation';
 import Arrow from './components/Arrow';
 import Home from './components/Home';
-
+import Intro from './components/Intro';
 import './App.css';
 import mistImg from './assets/mist.jpg';
 
-
-const mist = (
-  <img id='mist' src={mistImg} alt=''/>
-)
-
-function ContentPicker(props) {
-  if(props.pageIndex === 0){
-    return (<Home/>);
-  }
-  else{
-    return (<p>Sorry, Still Working on it.<br/>pageIndex: {props.pageIndex}</p>);
-  }
-}
 
 class App extends Component {
 
@@ -52,10 +41,27 @@ class App extends Component {
   }
 
   render() {
+
+    const mist = (
+      <img id='mist' src={mistImg} alt=''/>
+    )
+
+    const ContentPicker = (props) => {
+      if(props.pageIndex === 0){
+        return (<Home/>);
+      }
+      else if (props.pageIndex === 1) {
+        return(<Intro/>);
+      }
+      else{
+        return (<p>Sorry, Still Working on it.<br/>pageIndex: {props.pageIndex}</p>);
+      }
+    }
+
     return (
       <div
-      onMouseMove={(e)=>{this.refs.mountains.viewMove(e);
-                         this.refs.stars.viewMove(e);}}>
+      onMouseMove={(e)=>{this.refs.mountains.animation(e);
+                         this.refs.stars.animation(e);}}>
         <Stars ref="stars"/>
         <Stars/>
         <Mountains ref="mountains"/>
@@ -64,7 +70,7 @@ class App extends Component {
         <Arrow nextprevPage={this.nextprevPage} pageIndex={this.state.pageIndex}/>
 
         <div id="contents">
-          <ContentPicker pageIndex={this.state.pageIndex}/>
+            <ContentPicker pageIndex={this.state.pageIndex}/>
         </div>
       </div>
     );

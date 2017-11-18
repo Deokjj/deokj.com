@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import '../assets/animation.css';
 import {VelocityTransitionGroup, velocityHelpers} from 'velocity-react';
-import 'velocity-animate';
-import 'velocity-animate/velocity.ui';
-
 
 class Home extends Component {
   constructor(props){
@@ -42,15 +38,17 @@ class Home extends Component {
   render(){
     return(
       <div className="home">
-        <VelocityTransitionGroup enter={{animation: "slideDown", duration: 700, delay:600}} runOnMount={true}>
-          <h1 className="myName">Deokjae Jeon</h1>
-        </VelocityTransitionGroup>
-        <VelocityTransitionGroup enter={{animation: this.Animations.in, duration: 800, delay:100}} leave={{animation: this.Animations.out}} runOnMount={true}>
-          <hr className="middleStroke"/>
-        </VelocityTransitionGroup>
-        <VelocityTransitionGroup enter={{animation: "slideDown", duration: 700, delay:600}} runOnMount={true}>
-          <h4 className="shortIntro">Computer Scienctist | Student Dev</h4>
-        </VelocityTransitionGroup>
+        <div className="nameLogo">
+          <VelocityTransitionGroup enter={{animation: "slideDown", duration: 700, delay:600}} runOnMount={true}>
+            <h1 className="myName">Deokjae Jeon</h1>
+          </VelocityTransitionGroup>
+          <VelocityTransitionGroup enter={{animation: this.Animations.in, duration: 800, delay:100}} runOnMount={true}>
+            <hr className="middleStroke"/>
+          </VelocityTransitionGroup>
+          <VelocityTransitionGroup enter={{animation: "slideDown", duration: 700, delay:600}} runOnMount={true}>
+            <h4 className="shortIntro">Computer Scientist | Student Dev</h4>
+          </VelocityTransitionGroup>
+        </div>
       </div>
     );
   }
