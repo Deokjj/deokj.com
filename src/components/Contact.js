@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {VelocityTransitionGroup} from 'velocity-react';
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -37,11 +37,13 @@ class Contact extends Component{
   render(){
     return(
       <div className="contact">
-        <h2 className="contactHeader">Let's <span role="img" aria-label="Taco Emoji inserted here">🌮</span>'bout <span className='highlight'>New Ideas.</span></h2>
+        <VelocityTransitionGroup enter={{animation: "transition.flipYIn", duration: 700, delay:0}} runOnMount={true}>
+          <h2 className="contactHeader">Let's <span role="img" aria-label="Taco Emoji inserted here">🌮</span>'bout <span className='highlight'>New Ideas.</span></h2>
+        </VelocityTransitionGroup>
         <div className="contactBody flex">
+        <VelocityTransitionGroup enter={{animation: "transition.slideLeftIn", duration: 700, delay:0}} runOnMount={true}>
           <div className="contactLeft">
             <h4>Questions? Project Proposal? <span className="highlight">Email me!</span></h4>
-            <MuiThemeProvider>
               <div className="emailInput">
                 <TextField
                   disabled={this.state.checked}
@@ -88,8 +90,9 @@ class Contact extends Component{
                 labelStyle={{fontSize:'1.15em'}}
                 overlayStyle={{height: 50}}
               />
-            </MuiThemeProvider>
           </div>
+          </VelocityTransitionGroup>
+          <VelocityTransitionGroup enter={{animation: "transition.slideRightIn", duration: 700, delay:0}} runOnMount={true}>
           <div className="contactRight">
             <div className="socialIconFlex">
               <a href="http://github.com/Deokjj">
@@ -105,10 +108,13 @@ class Contact extends Component{
             <h5 className="resume"><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1gr8H5VQG7BO5nfGBhb4aGeLPZd8bK-QZ1XLHnYe-5lc/edit?rm=minimal">View My <span  className="highlight">Resume</span></a>
             </h5>
           </div>
+          </VelocityTransitionGroup>
         </div>
-        <div className="footer">
-          <h5>Made with <span role="img" aria-label="heartLove emoji inserts here">❤️</span> by Deokjae | © 2017</h5>
-        </div>
+        <VelocityTransitionGroup enter={{animation: "transition.slideLeftBigIn", duration: 1000, delay:0}} runOnMount={true}>
+          <div className="footer">
+            <h5>Made with <span role="img" aria-label="heartLove emoji inserts here">❤️</span> by Deokjae | © 2017</h5>
+          </div>
+        </VelocityTransitionGroup>
       </div>
     );
   }

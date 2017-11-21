@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'velocity-animate';
 import 'velocity-animate/velocity.ui';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Stars from './components/Stars';
 import Mountains from './components/Mountains';
 import Navigation from './components/Navigation';
@@ -59,7 +60,11 @@ class App extends Component {
         return(<Works/>);
       }
       else if (props.pageIndex === 3) {
-        return(<Contact/>);
+        return(
+          <MuiThemeProvider>
+            <Contact/>
+          </MuiThemeProvider>
+        );
       }
       else{
         return (<p>Sorry, Still Working on it.<br/>pageIndex: {props.pageIndex}</p>);

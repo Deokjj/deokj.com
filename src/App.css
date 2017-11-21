@@ -231,7 +231,8 @@ img{
 .sendBtn{
   margin: 2vh 30px;
   position: relative;
-  float: right;
+  left:50%;
+  transform: translateX(-50%);
 }
 
 .resume{
@@ -330,10 +331,6 @@ canvas{
   }
   .sendBtn{
     margin: 1.5vh 0 2vh 0 !important;
-    position: relative;
-    float: none;
-    left:50%;
-    transform: translateX(-50%);
   }
 }
 
