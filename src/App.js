@@ -8,6 +8,8 @@ import Navigation from './components/Navigation';
 import Arrow from './components/Arrow';
 import Home from './components/Home';
 import Intro from './components/Intro';
+import Works from './components/Works';
+import Contact from './components/Contact';
 import './App.css';
 import mistImg from './assets/mist.jpg';
 
@@ -52,6 +54,12 @@ class App extends Component {
       }
       else if (props.pageIndex === 1) {
         return(<Intro/>);
+      }
+      else if (props.pageIndex === 2) {
+        return(<Works/>);
+      }
+      else if (props.pageIndex === 3) {
+        return(<Contact/>);
       }
       else{
         return (<p>Sorry, Still Working on it.<br/>pageIndex: {props.pageIndex}</p>);

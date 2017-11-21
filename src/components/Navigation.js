@@ -39,9 +39,7 @@ class Navigation extends Component {
           <li className="nav__items"><a onClick={()=>{this.changeIndex(2)}}>Works</a></li>
           <li className="nav__items"><a onClick={()=>{this.changeIndex(3)}}>Contact</a></li>
           <li className="nav__items">
-            <a href="https://docs.google.com/document/d/1gr8H5VQG7BO5nfGBhb4aGeLPZd8bK-QZ1XLHnYe-5lc/edit?usp=sharing">Resume
-              <img src="chrome-extension://gmpljdlgcdkljlppaekciacdmdlhfeon/images/beside-link-icon.svg" alt=''/>
-            </a>
+            <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1gr8H5VQG7BO5nfGBhb4aGeLPZd8bK-QZ1XLHnYe-5lc/edit?rm=minimal">Resume</a>
           </li>
         </ul>
         </nav>

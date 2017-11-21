@@ -10,7 +10,6 @@ class Arrow extends Component {
   }
 
   nextprevPage = (str) =>{
-    console.log(this.props);
     if (typeof this.props.nextprevPage === 'function') {
         this.props.nextprevPage(str);
     }

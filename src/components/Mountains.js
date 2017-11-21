@@ -5,13 +5,20 @@ import {VelocityComponent, velocityHelpers} from 'velocity-react';
 class Mountains extends Component {
     constructor(props){
       super(props);
+      if(window.innerWidth/window.innerHeight < 1.2)
+        this.portraitish = true;
+      else
+        this.portraitish = false;
+      let translateY;
+      if(this.portraitish) translateY = '5vh';
+      else translateY = '20vh';
 
       let ani = velocityHelpers.registerEffect({
         defaultDuration: 0,
         calls: [
           [{
               translateX: '10vw',
-              translateY:'20vh'
+              translateY: translateY
           }, 1, {
               delay: 0,
               easing: 'cubic-bezier(.75,0,.25,1)'
@@ -28,8 +35,8 @@ class Mountains extends Component {
 
     animation = (e) => {
       let x = 10 - (e.pageX /this.width - 0.5)*8;
-      let y = 20 - (e.pageY /this.height - 0.5)*10;
-
+      let y = (this.portraitish) ?
+        5 - (e.pageY /this.height - 0.5)*5 :20 - (e.pageY /this.height - 0.5)*10;
       let ani = velocityHelpers.registerEffect({
         defaultDuration: 600,
         calls: [
