@@ -33,7 +33,6 @@ img{
 }
 #contents{
   position: absolute;
-  z-index: 3;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
@@ -72,6 +71,7 @@ img{
 
 .intro,
 .contact{
+  z-index: 3;
   position: absolute;
   top:50vh;
   left:50vw;
@@ -142,6 +142,7 @@ img{
 }
 
 .works{
+    z-index: 3;
     position: absolute;
     text-align: center;
     width: 100vw;
@@ -159,12 +160,40 @@ img{
   min-width: 260px;
   margin: 1%;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .projectImg{
   width: 100%;
   height: auto;
   border-radius: 10px;
+}
+
+.projectOpen{
+  position: fixed;
+  display: block;
+  width: 100vw;
+  top: 50vh;
+  left: 0;
+  z-index: 500 !important;
+}
+
+.openImg{
+  position: absolute;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.overlay{
+  display:block;
+  overflow:hidden;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top:0;
+  left:0;
+  z-index:499;
+  background-color: rgba(0,0,0,.8);
 }
 
 .contact{
@@ -296,7 +325,7 @@ canvas{
   }
 
   h1{
-    font-size: 3.2rem;
+    font-size: 3.15rem;
   }
   h2{
     font-size: 2.3rem;
@@ -353,7 +382,7 @@ canvas{
   }
 
   .nameLogo{
-    width: 360px;
+    width: 365px;
   }
   h1{
     font-size: 3.2rem;
@@ -388,10 +417,10 @@ canvas{
 
 @media (max-width: 380px) {
   .nameLogo{
-    width: 300px;
+    width: 305px;
   }
   h1{
-    font-size: 2.7rem;
+    font-size: 2.65rem;
   }
   h2{
     font-size: 2rem;
@@ -400,7 +429,7 @@ canvas{
     font-size: 1.5rem;
   }
   h4{
-    font-size: 1.11rem;
+    font-size: 1.1rem;
   }
   h5{
     font-size: 1rem;

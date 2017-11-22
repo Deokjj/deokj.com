@@ -10,7 +10,7 @@ class Mountains extends Component {
       else
         this.portraitish = false;
       let translateY;
-      if(this.portraitish) translateY = '5vh';
+      if(this.portraitish) translateY = '0';
       else translateY = '20vh';
 
       let ani = velocityHelpers.registerEffect({
@@ -34,9 +34,9 @@ class Mountains extends Component {
     }
 
     animation = (e) => {
+      if(this.portraitish) return;
       let x = 10 - (e.pageX /this.width - 0.5)*8;
-      let y = (this.portraitish) ?
-        5 - (e.pageY /this.height - 0.5)*5 :20 - (e.pageY /this.height - 0.5)*10;
+      let y = 20 - (e.pageY /this.height - 0.5)*10;
       let ani = velocityHelpers.registerEffect({
         defaultDuration: 600,
         calls: [

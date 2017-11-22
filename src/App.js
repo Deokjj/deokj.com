@@ -19,7 +19,7 @@ class App extends Component {
 
   constructor(props){
     super(props);
-    this.state = {pageIndex:0}
+    this.state = {pageIndex:2}
     this.pageChange = this.pageChange.bind(this);
     this.nextprevPage = this.nextprevPage.bind(this);
   }
@@ -57,7 +57,11 @@ class App extends Component {
         return(<Intro/>);
       }
       else if (props.pageIndex === 2) {
-        return(<Works/>);
+        return(
+          <MuiThemeProvider>
+            <Works/>
+          </MuiThemeProvider>
+        );
       }
       else if (props.pageIndex === 3) {
         return(

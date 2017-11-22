@@ -9,6 +9,11 @@ class Stars extends Component {
     const height = window.innerHeight;
     this.rint = 50;
 
+    if(window.innerWidth/window.innerHeight < 1.2)
+      this.portraitish = true;
+    else
+      this.portraitish = false;
+
     let ani = velocityHelpers.registerEffect({
       defaultDuration: 0,
       calls: [
@@ -55,6 +60,7 @@ class Stars extends Component {
   }
 
   animation = (e) => {
+    if(this.portraitish) return;
     let x = -10 - (e.pageX /this.state.width - 0.5)*3;
     let y = -10 - (e.pageY /this.state.height - 0.5)*3;
 

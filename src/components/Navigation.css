@@ -71,7 +71,7 @@
   display:block;
   height:100vh;
   position: absolute;
-  z-index: 100;
+  z-index: 100 !important;
 }
 
 .is-fading-up {
