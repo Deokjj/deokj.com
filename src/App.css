@@ -3,7 +3,7 @@
 }
 
 h1{
-  font-size: 5rem;
+  font-size: 4.95rem;
 }
 h2{
   font-size: 4rem;
@@ -71,7 +71,7 @@ img{
 
 .intro,
 .contact{
-  z-index: 3;
+  z-index: 4;
   position: absolute;
   top:50vh;
   left:50vw;
@@ -81,6 +81,7 @@ img{
   padding: 2.5vw;
   box-sizing: border-box;
   font-weight: 100;
+  overflow: hidden;
 }
 
 
@@ -142,11 +143,12 @@ img{
 }
 
 .works{
-    z-index: 3;
+    z-index: 4;
     position: absolute;
     text-align: center;
     width: 100vw;
     padding-top: 6vh;
+    overflow: hidden;
 }
 .projectList{
   padding: 0 12vw;
@@ -167,6 +169,7 @@ img{
   width: 100%;
   height: auto;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .projectOpen{
@@ -194,6 +197,46 @@ img{
   left:0;
   z-index:499;
   background-color: rgba(0,0,0,.8);
+}
+
+.snackBar{
+  text-align: center;
+  padding-top: 3%;
+  padding-bottom: 1%;
+  letter-spacing: normal;
+  background-color: rgba(236, 235, 232,.9);
+  position: fixed;
+  z-index: 501;
+  width: 100vw;
+  bottom: 0;
+  height: auto;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  display: block;
+  color: black;
+  box-sizing: border-box;
+  /*font-size: 0.8em;*/
+}
+
+.snackBar h4{
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+.snackBar h5{
+  margin-bottom: 6px;
+  font-weight: 300;
+}
+.snackBar h5:last-child{
+  font-weight: 900;
+}
+
+@media (min-width: 750px){
+  .snackBar {
+      width: 60%;
+      padding: 2.5%;
+      padding-bottom: 1%;
+  }
 }
 
 .contact{
@@ -420,7 +463,7 @@ canvas{
     width: 305px;
   }
   h1{
-    font-size: 2.65rem;
+    font-size: 2.6rem;
   }
   h2{
     font-size: 2rem;

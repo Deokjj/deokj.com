@@ -19,7 +19,7 @@ class App extends Component {
 
   constructor(props){
     super(props);
-    this.state = {pageIndex:2}
+    this.state = {pageIndex:0}
     this.pageChange = this.pageChange.bind(this);
     this.nextprevPage = this.nextprevPage.bind(this);
   }
