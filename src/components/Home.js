@@ -42,9 +42,11 @@ class Home extends Component {
           <VelocityTransitionGroup enter={{animation: "slideDown", duration: 700, delay:600}} runOnMount={true}>
             <h1 className="myName">Deokjae Jeon</h1>
           </VelocityTransitionGroup>
-          <VelocityTransitionGroup enter={{animation: this.Animations.in, duration: 800, delay:100}} runOnMount={true}>
-            <hr className="middleStroke"/>
-          </VelocityTransitionGroup>
+            <div className="strokeWrapper">
+            <VelocityTransitionGroup enter={{animation: this.Animations.in, duration: 800, delay:100}} runOnMount={true}>
+              <hr className="middleStroke"/>
+            </VelocityTransitionGroup>
+            </div>
           <VelocityTransitionGroup enter={{animation: "slideDown", duration: 700, delay:600}} runOnMount={true}>
             <h4 className="shortIntro">Computer Scientist | Student Dev</h4>
           </VelocityTransitionGroup>

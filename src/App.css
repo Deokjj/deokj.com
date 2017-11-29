@@ -45,15 +45,21 @@ img{
   left:50vw;
   transform: translate(-50%,-50%);
   text-align: center;
-  width: 560px;
+  width: 600px;
 }
 
+.strokeWrapper{
+  margin: 5px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
 
 .middleStroke{
+  box-sizing: border-box;
   border-color:#1db954;
   border-width: 1.5px;
   border-style: solid;
-  margin: 5px auto;
   width: 0;
 }
 
@@ -147,7 +153,9 @@ img{
     position: absolute;
     text-align: center;
     width: 100vw;
-    padding-top: 6vh;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 6vh 0;
     overflow: hidden;
 }
 .projectList{
@@ -178,7 +186,9 @@ img{
   width: 100vw;
   top: 50vh;
   left: 0;
-  z-index: 500 !important;
+  z-index: 12;
+  -webkit-perspective: 1200px;
+  perspective: 1200px;
 }
 
 .openImg{
@@ -195,8 +205,10 @@ img{
   height: 100vh;
   top:0;
   left:0;
-  z-index:499;
+  z-index:11;
   background-color: rgba(0,0,0,.8);
+  -webkit-perspective: 1200px;
+  perspective: 1200px;
 }
 
 .snackBar{
@@ -206,7 +218,7 @@ img{
   letter-spacing: normal;
   background-color: rgba(236, 235, 232,.9);
   position: fixed;
-  z-index: 501;
+  z-index: 13;
   width: 100vw;
   bottom: 0;
   height: auto;
@@ -216,6 +228,8 @@ img{
   display: block;
   color: black;
   box-sizing: border-box;
+  -webkit-perspective: 1200px;
+  perspective: 1200px;
   /*font-size: 0.8em;*/
 }
 
@@ -231,9 +245,9 @@ img{
   font-weight: 900;
 }
 
-@media (min-width: 750px){
+@media (min-width: 1024px){
   .snackBar {
-      width: 60%;
+      width: 65%;
       padding: 2.5%;
       padding-bottom: 1%;
   }
@@ -425,7 +439,10 @@ canvas{
   }
 
   .nameLogo{
-    width: 365px;
+    width: 380px;
+  }
+  .strokeWrapper{
+    padding: 0 10px;
   }
   h1{
     font-size: 3.2rem;
@@ -460,7 +477,10 @@ canvas{
 
 @media (max-width: 380px) {
   .nameLogo{
-    width: 305px;
+    width: 320px;
+  }
+  .strokeWrapper{
+    padding: 0 10px;
   }
   h1{
     font-size: 2.6rem;

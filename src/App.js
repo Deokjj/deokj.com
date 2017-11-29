@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import 'velocity-animate';
 import 'velocity-animate/velocity.ui';
 
+import {VelocityTransitionGroup} from 'velocity-react';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Stars from './components/Stars';
 import Mountains from './components/Mountains';
@@ -84,7 +86,12 @@ class App extends Component {
         <Mountains ref="mountains"/>
         {mist}
         <Navigation pageChange={this.pageChange}/>
-        <Arrow nextprevPage={this.nextprevPage} pageIndex={this.state.pageIndex}/>
+        <VelocityTransitionGroup enter={{animation: 'transition.expandIn', duration: 600}} leave={{animation: 'transition.slideLeftOut', duration: 800}}>
+          {(this.state.pageIndex>0) ? <Arrow nextprevPage={this.nextprevPage} pageIndex={this.state.pageIndex} direction='left'/> : undefined}
+        </VelocityTransitionGroup>
+        <VelocityTransitionGroup>
+          {(this.state.pageIndex<3) ? <Arrow nextprevPage={this.nextprevPage} pageIndex={this.state.pageIndex} direction='right'/> : undefined}
+        </VelocityTransitionGroup>
 
         <div id="contents">
             <ContentPicker pageIndex={this.state.pageIndex}/>

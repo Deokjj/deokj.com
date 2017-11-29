@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Tilt from 'react-tilt'
 import {VelocityTransitionGroup} from 'velocity-react';
+import Tilt from 'react-tilt'
+// import FlatButton from 'material-ui/FlatButton';
 
 import deokjdotcom from '../assets/deokjdotcom.png';
 import madClock from '../assets/madClock.png';
@@ -12,10 +13,15 @@ import toiletnotatrashcan from '../assets/toiletnotatrashcan.png';
 class Works extends Component {
   constructor(props){
     super(props);
+    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
     this.state={
       clicked : false,
-      selected : ''
+      selected : '',
+      isChrome: isChrome
     }
+  }
+
+  componentDidMount(){
   }
 
   projectSelect(project){
@@ -27,11 +33,11 @@ class Works extends Component {
 
   render(){
     const tiltOption={
-      max:            30,     // max tilt rotation (degrees)
-      perspective:    1000,   // Transform perspective, the lower the more extreme the tilt gets.
+      max:            (this.state.isChrome) ? 30 : 0,     // max tilt rotation (degrees)
+      perspective:    (this.state.isChrome) ? 1000 : 0,   // Transform perspective, the lower the more extreme the tilt gets.
       scale:          1.05,      // 2 = 200%, 1.5 = 150%, etc..
       speed:          1000,    // Speed of the enter/exit transition
-      transition:     true,   // Set a transition on enter/exit.
+      transition:     false,   // Set a transition on enter/exit.
     }
 
     let snackBarMsg = (<h4>This Project Description has not been updated yet.</h4>);
@@ -52,12 +58,12 @@ class Works extends Component {
       snackBarMsg = (
         <div>
           <h4 className="highlight">Mad Alarm</h4>
-          <h5>MEAN web application that is hybrid of alarm clock and social media.
+          <h5>MEAN web application.
           Users can set up their alarm or timer. In order to turn off the alarm,
           user must make facial expressions as instructed by the app.
           After completion, it posts user’s captured photos that will be shared as part of social media.</h5>
           <h5>
-            Angular 4, Node.js, MongoDB, Express.js, App RESTful API, Google Vision API, Amazon Web Service S3, Youtube Data API (v3). Single page application.
+            Angular 4, Node.js, MongoDB, Express.js, App RESTful API, Google Vision API, Amazon Web Service S3, Youtube Data API. Single page application.
           </h5>
         </div>
       );
@@ -138,12 +144,12 @@ class Works extends Component {
           </Tilt>
         </div>
         <VelocityTransitionGroup enter={{animation: 'transition.bounceDownIn', duration: 500}} leave={{animation: 'transition.bounceUpOut', duration: 500}}>
-          {this.state.clicked ? <div className="overlay" onClick={(e)=>{this.projectSelect('');}}></div> : undefined}
+          {this.state.clicked ? <div className="overlay" style={{position: 'fixed',zIndex: 11}} onClick={(e)=>{this.projectSelect('');}}></div> : undefined}
         </VelocityTransitionGroup>
         <VelocityTransitionGroup enter={{animation: 'transition.expandIn', duration: 400, delay: 200}} leave={{animation: 'transition.expandOut',duration: 400, delay: 200}}>
-        {this.state.clicked ? <SelectedProject/> : undefined}
+          {this.state.clicked ? <SelectedProject/> : undefined}
         </VelocityTransitionGroup>
-        <VelocityTransitionGroup enter={{animation: 'transition.slideUpBigIn', duration: 500, delay: 500}} leave={{animation: 'transition.slideDownBigOut', duration: 500}}>
+        <VelocityTransitionGroup enter={{animation: 'transition.slideUpBigIn', duration: 500, delay: 400}} leave={{animation: 'transition.slideDownBigOut', duration: 500}}>
           {this.state.clicked ? <div className="snackBar">{snackBarMsg}</div> : undefined}
         </VelocityTransitionGroup>
       </div>

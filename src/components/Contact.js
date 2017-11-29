@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {VelocityTransitionGroup} from 'velocity-react';
 import TextField from 'material-ui/TextField';
-import Checkbox from 'material-ui/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
-import ActionFavorite from 'material-ui/svg-icons/action/favorite';
-import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
+// import Checkbox from 'material-ui/Checkbox';
+// import ActionFavorite from 'material-ui/svg-icons/action/favorite';
+// import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
 import Send from 'material-ui/svg-icons/content/send';
 import GithubIcon from 'react-icons/lib/fa/github';
 import LinkedInIcon from 'react-icons/lib/fa/linkedin-square';
@@ -17,7 +17,9 @@ class Contact extends Component{
     this.state = {
       checked: false,
       emailLabel: "Email Address",
-      checkBoxLabelColor: '#d4d3d0'
+      checkBoxLabelColor: '#d4d3d0',
+      emailInput: '',
+      textInput: ''
     }
   }
 
@@ -31,6 +33,19 @@ class Contact extends Component{
         emailLabel: newEmailLabel,
         checkBoxLabelColor: newCheckBoxLabelColor
       };
+    });
+  }
+
+  emailInputChange = (e) => {
+    this.setState({
+      emailInput: e.target.value,
+    });
+  }
+
+  textInputChange = (e) => {
+    let body = e.target.value.replace(/\n/g, "%0D%0A")
+    this.setState({
+      textInput: body,
     });
   }
 
@@ -55,16 +70,9 @@ class Contact extends Component{
                   inputStyle={{color: '#ecebe8', fontSize: '1.3em'}}
                   style={{marginRight: 15, marginTop: 0}}
                   className="emailAddressInput"
+                  onChange={this.emailInputChange}
                 />
-                <Checkbox
-                  className="anonymousCheckBox"
-                  checkedIcon={<ActionFavorite style={{fill: '#1db954'}}/>}
-                  uncheckedIcon={<ActionFavoriteBorder style={{fill: '#d4d3d0'}}/>}
-                  iconStyle={{color: '#1db954'}}
-                  label="Anonymous Feedback"
-                  labelStyle={{color: this.state.checkBoxLabelColor, fontSize: '0.7em'}}
-                  onCheck={this.updateCheck.bind(this)}
-                />
+                <span className="pasteBack here"></span>
               </div>
 
               <TextField
@@ -80,6 +88,7 @@ class Contact extends Component{
                 floatingLabelStyle={{color: '#1db954', fontSize: '1.3em'}}
                 underlineFocusStyle={{borderColor: '#1db954'}}
                 textareaStyle={{color: '#ecebe8', fontSize: '1.3em'}}
+                onChange={this.textInputChange}
               />
               <RaisedButton
                 label="Send"
@@ -89,6 +98,7 @@ class Contact extends Component{
                 icon={<Send />}
                 labelStyle={{fontSize:'1.15em'}}
                 overlayStyle={{height: 50}}
+                href={`mailto:deokjj@gmail.com?subject=Deokj.com Feedback&body=From ${this.state.emailInput}%0D%0A%0D%0A${this.state.textInput}`}
               />
           </div>
           </VelocityTransitionGroup>
@@ -120,4 +130,13 @@ class Contact extends Component{
   }
 }
 
+// <Checkbox
+//   className="anonymousCheckBox"
+//   checkedIcon={<ActionFavorite style={{fill: '#1db954'}}/>}
+//   uncheckedIcon={<ActionFavoriteBorder style={{fill: '#d4d3d0'}}/>}
+//   iconStyle={{color: '#1db954'}}
+//   label="Anonymous Feedback"
+//   labelStyle={{color: this.state.checkBoxLabelColor, fontSize: '0.7em'}}
+//   onCheck={this.updateCheck.bind(this)}
+// />
 export default Contact

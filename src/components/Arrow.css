@@ -187,9 +187,10 @@
 
 .c-arrow.c-arrow--right {
   right: 126px;
-  margin-right: -40px;
-  -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
+  margin-right: -140px;
+  -webkit-transform-origin: center left;
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
 }
