@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import {VelocityTransitionGroup} from 'velocity-react';
 import Tilt from 'react-tilt'
-// import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+
+import CodeIcon from 'react-icons/lib/md/code';
+import YoutubeIcon from 'react-icons/lib/fa/youtube-play';
+import DesktopIcon from 'react-icons/lib/md/desktop-windows';
 
 import deokjdotcom from '../assets/deokjdotcom.png';
 import madClock from '../assets/madClock.png';
@@ -50,6 +54,12 @@ class Works extends Component {
           <h4 className="highlight">Deokj.com</h4>
           <h5>The Website you are on right now!</h5>
           <h5>ReactJS posted on Firebase</h5>
+          <RaisedButton
+            href="https://github.com/Deokjj/deokj.com"
+            target="_blank"
+            label="View Codes"
+            icon={<CodeIcon />}
+          />
         </div>
       )
     }
@@ -65,6 +75,48 @@ class Works extends Component {
           <h5>
             Angular 4, Node.js, MongoDB, Express.js, App RESTful API, Google Vision API, Amazon Web Service S3, Youtube Data API. Single page application.
           </h5>
+          <div className="btnFlex">
+            <div className="btnItem">
+              <RaisedButton
+                href="https://github.com/Deokjj/AlarmMadness"
+                target="_blank"
+                label="Client Codes"
+                fullWidth={true}
+                icon={<CodeIcon />}
+              />
+            </div>
+            <div className="btnItem">
+              <RaisedButton
+                href="https://github.com/Deokjj/AlarmMadnessApi"
+                target="_blank"
+                label="Server Codes"
+                fullWidth={true}
+                icon={<CodeIcon />}
+              />
+            </div>
+            <div className="btnItem">
+              <RaisedButton
+                href="https://youtu.be/GhnBJbq0Enw"
+                target="_blank"
+                label="Video Demo"
+                fullWidth={true}
+                backgroundColor="#1db954"
+                labelStyle={{color: '#ecebe8'}}
+                icon={<YoutubeIcon />}
+              />
+            </div>
+            <div className="btnItem">
+              <RaisedButton
+                href="https://alarmmadness.herokuapp.com"
+                target="_blank"
+                label="Try It"
+                fullWidth={true}
+                backgroundColor="#1db954"
+                labelStyle={{color: '#ecebe8'}}
+                icon={<DesktopIcon />}
+              />
+            </div>
+          </div>
         </div>
       );
     }
@@ -75,6 +127,21 @@ class Works extends Component {
           <h4 className="highlight">TinGrindr</h4>
           <h5>A dating Application that is inclusive of gender diversity and is free of discriminations that are often displayed popular dating apps such as Tinder and Grindr</h5>
           <h5>FullStack app - Node.js, MongoDB, Mongoose, Express.js, Fully responsive.</h5>
+          <RaisedButton
+          href="https://github.com/Deokjj/tinGrindR"
+          target="_blank"
+          label="View Codes"
+          icon={<CodeIcon />}
+          />
+          <span className="btnPadding"></span>
+          <RaisedButton
+          href="https://tingrindr.herokuapp.com"
+          target="_blank"
+          label="Try It"
+          backgroundColor="#1db954"
+          labelStyle={{color: '#ecebe8'}}
+          icon={<DesktopIcon />}
+          />
         </div>
       );
     }
@@ -88,7 +155,7 @@ class Works extends Component {
         </div>
       );
     }
-    else{
+    else if(this.state.selected === 'toilet'){
       openedImg = (<img className="projectImg openImg" src = {toiletnotatrashcan} alt=""/>);
       snackBarMsg = (
         <div>
@@ -97,8 +164,27 @@ class Works extends Component {
            User can alter weights, power value, initial projectile angle, initial y-axis position of trajectories.
           </h5>
           <h5>HTML5, CSS, SASS, JavaScript, jQuery and Canvas API</h5>
+          <RaisedButton
+          href="https://github.com/Deokjj/ToiletNotATrashCan"
+          target="_blank"
+          label="View Codes"
+          icon={<CodeIcon />}
+          />
+          <span className="btnPadding"></span>
+          <RaisedButton
+          href="https://deokjj.github.io/ToiletNotATrashCan/"
+          target="_blank"
+          label="Try It"
+          backgroundColor="#1db954"
+          labelStyle={{color: '#ecebe8'}}
+          icon={<DesktopIcon />}
+          />
         </div>
       );
+    }
+    else{
+      openedImg = undefined;
+      snackBarMsg = undefined;
     }
 
     const SelectedProject = () =>{
