@@ -236,7 +236,7 @@ class Works extends Component {
           {this.state.clicked ? <SelectedProject/> : undefined}
         </VelocityTransitionGroup>
         <VelocityTransitionGroup enter={{animation: 'transition.slideUpBigIn', duration: 500, delay: 400}} leave={{animation: 'transition.slideDownBigOut', duration: 500}}>
-          {this.state.clicked ? <div className="snackBar">{snackBarMsg}</div> : undefined}
+          {this.state.clicked ? <div className="snackBar" onClick={(e)=>{this.projectSelect('');}}>{snackBarMsg}</div> : undefined}
         </VelocityTransitionGroup>
       </div>
     );
