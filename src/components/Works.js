@@ -29,9 +29,16 @@ class Works extends Component {
   }
 
   projectSelect(project){
-    this.setState((prevState)=>({
-      clicked : !prevState.clicked,
+    this.setState(()=>({
+      clicked : true,
       selected : project
+    }));
+  }
+
+  projectClose(){
+    this.setState(()=>({
+      clicked : false,
+      selected: ''
     }));
   }
 
@@ -55,6 +62,7 @@ class Works extends Component {
           <h5>The Website you are on right now!</h5>
           <h5>ReactJS posted on Firebase</h5>
           <RaisedButton
+            onClick ={(e)=>{e.stopPropagation();}}
             href="https://github.com/Deokjj/deokj.com"
             target="_blank"
             label="View Codes"
@@ -78,6 +86,7 @@ class Works extends Component {
           <div className="btnFlex">
             <div className="btnItem">
               <RaisedButton
+                onClick ={(e)=>{e.stopPropagation();}}
                 href="https://github.com/Deokjj/AlarmMadness"
                 target="_blank"
                 label="Client Codes"
@@ -87,6 +96,7 @@ class Works extends Component {
             </div>
             <div className="btnItem">
               <RaisedButton
+                onClick ={(e)=>{e.stopPropagation();}}
                 href="https://github.com/Deokjj/AlarmMadnessApi"
                 target="_blank"
                 label="Server Codes"
@@ -96,6 +106,7 @@ class Works extends Component {
             </div>
             <div className="btnItem">
               <RaisedButton
+                onClick ={(e)=>{e.stopPropagation();}}
                 href="https://youtu.be/GhnBJbq0Enw"
                 target="_blank"
                 label="Video Demo"
@@ -107,6 +118,7 @@ class Works extends Component {
             </div>
             <div className="btnItem">
               <RaisedButton
+                onClick ={(e)=>{e.stopPropagation();}}
                 href="https://alarmmadness.herokuapp.com"
                 target="_blank"
                 label="Try It"
@@ -128,19 +140,21 @@ class Works extends Component {
           <h5>A dating Application that is inclusive of gender diversity and is free of discriminations that are often displayed popular dating apps such as Tinder and Grindr</h5>
           <h5>FullStack app - Node.js, MongoDB, Mongoose, Express.js, Fully responsive.</h5>
           <RaisedButton
-          href="https://github.com/Deokjj/tinGrindR"
-          target="_blank"
-          label="View Codes"
-          icon={<CodeIcon />}
+            onClick ={(e)=>{e.stopPropagation();}}
+            href="https://github.com/Deokjj/tinGrindR"
+            target="_blank"
+            label="View Codes"
+            icon={<CodeIcon />}
           />
           <span className="btnPadding"></span>
           <RaisedButton
-          href="https://tingrindr.herokuapp.com"
-          target="_blank"
-          label="Try It"
-          backgroundColor="#1db954"
-          labelStyle={{color: '#ecebe8'}}
-          icon={<DesktopIcon />}
+            onClick ={(e)=>{e.stopPropagation();}}
+            href="https://tingrindr.herokuapp.com"
+            target="_blank"
+            label="Try It"
+            backgroundColor="#1db954"
+            labelStyle={{color: '#ecebe8'}}
+            icon={<DesktopIcon />}
           />
         </div>
       );
@@ -165,19 +179,21 @@ class Works extends Component {
           </h5>
           <h5>HTML5, CSS, SASS, JavaScript, jQuery and Canvas API</h5>
           <RaisedButton
-          href="https://github.com/Deokjj/ToiletNotATrashCan"
-          target="_blank"
-          label="View Codes"
-          icon={<CodeIcon />}
+            onClick ={(e)=>{e.stopPropagation();}}
+            href="https://github.com/Deokjj/ToiletNotATrashCan"
+            target="_blank"
+            label="View Codes"
+            icon={<CodeIcon />}
           />
           <span className="btnPadding"></span>
           <RaisedButton
-          href="https://deokjj.github.io/ToiletNotATrashCan/"
-          target="_blank"
-          label="Try It"
-          backgroundColor="#1db954"
-          labelStyle={{color: '#ecebe8'}}
-          icon={<DesktopIcon />}
+            onClick ={(e)=>{e.stopPropagation();}}
+            href="https://deokjj.github.io/ToiletNotATrashCan/"
+            target="_blank"
+            label="Try It"
+            backgroundColor="#1db954"
+            labelStyle={{color: '#ecebe8'}}
+            icon={<DesktopIcon />}
           />
         </div>
       );
@@ -189,7 +205,7 @@ class Works extends Component {
 
     const SelectedProject = () =>{
       return(
-        <div className="projectOpen" onClick={(e)=>{this.projectSelect('');}}>
+        <div className="projectOpen" onClick={(e)=>{this.projectClose();}}>
           {openedImg}
         </div>
       );
@@ -230,13 +246,13 @@ class Works extends Component {
           </Tilt>
         </div>
         <VelocityTransitionGroup enter={{animation: 'transition.bounceDownIn', duration: 500}} leave={{animation: 'transition.bounceUpOut', duration: 500}}>
-          {this.state.clicked ? <div className="overlay" style={{position: 'fixed',zIndex: 11}} onClick={(e)=>{this.projectSelect('');}}></div> : undefined}
+          {this.state.clicked ? <div className="overlay" style={{position: 'fixed',zIndex: 11}} onClick={(e)=>{this.projectClose();}}></div> : undefined}
         </VelocityTransitionGroup>
         <VelocityTransitionGroup enter={{animation: 'transition.expandIn', duration: 400, delay: 200}} leave={{animation: 'transition.expandOut',duration: 400, delay: 200}}>
           {this.state.clicked ? <SelectedProject/> : undefined}
         </VelocityTransitionGroup>
         <VelocityTransitionGroup enter={{animation: 'transition.slideUpBigIn', duration: 500, delay: 400}} leave={{animation: 'transition.slideDownBigOut', duration: 500}}>
-          {this.state.clicked ? <div className="snackBar" onClick={(e)=>{this.projectSelect('');}}>{snackBarMsg}</div> : undefined}
+          {this.state.clicked ? <div className="snackBar" onClick={(e)=>{this.projectClose();}}>{snackBarMsg}</div> : undefined}
         </VelocityTransitionGroup>
       </div>
     );

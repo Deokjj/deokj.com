@@ -13,6 +13,7 @@ import Home from './components/Home';
 import Intro from './components/Intro';
 import Works from './components/Works';
 import Contact from './components/Contact';
+import SnackBarCustom from './components/SnackBarCustom';
 import './App.css';
 import mistImg from './assets/mist.jpg';
 
@@ -21,9 +22,45 @@ class App extends Component {
 
   constructor(props){
     super(props);
-    this.state = {pageIndex:0}
+    this.state = {
+      pageIndex:0,
+      open: true,
+      mobile: this.detectmob()
+    };
     this.pageChange = this.pageChange.bind(this);
     this.nextprevPage = this.nextprevPage.bind(this);
+    this.handleKeyUp = this.handleKeyUp.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('keyup', this.handleKeyUp);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keyup', this.handleKeyUp);
+  }
+
+  detectmob() {
+     if(window.innerWidth <= 800 || window.innerHeight <= 600) {
+       return true;
+     } else {
+       return false;
+     }
+  }
+
+  handleKeyUp(e){
+    if(e.key === 'ArrowUp' || e.key ==='ArrowRight'){
+      if(this.rightArrow) {
+        this.rightArrow.rightClick();
+        this.rightArrow.nextprevPage('next');
+      }
+    }
+    else if(e.key === 'ArrowDown' || e.key === 'ArrowLeft'){
+      if(this.leftArrow) {
+        this.leftArrow.leftClick();
+        this.leftArrow.nextprevPage('prev');
+      }
+    }
   }
 
   pageChange(index) {
@@ -59,18 +96,10 @@ class App extends Component {
         return(<Intro/>);
       }
       else if (props.pageIndex === 2) {
-        return(
-          <MuiThemeProvider>
-            <Works/>
-          </MuiThemeProvider>
-        );
+        return(<Works/>);
       }
       else if (props.pageIndex === 3) {
-        return(
-          <MuiThemeProvider>
-            <Contact/>
-          </MuiThemeProvider>
-        );
+        return(<Contact/>);
       }
       else{
         return (<p>Sorry, Still Working on it.<br/>pageIndex: {props.pageIndex}</p>);
@@ -78,25 +107,29 @@ class App extends Component {
     }
 
     return (
-      <div
-      onMouseMove={(e)=>{this.refs.mountains.animation(e);
-                         this.refs.stars.animation(e);}}>
-        <Stars ref="stars"/>
-        <Stars/>
-        <Mountains ref="mountains"/>
-        {mist}
-        <Navigation pageChange={this.pageChange}/>
-        <VelocityTransitionGroup enter={{animation: 'transition.expandIn', duration: 600}} leave={{animation: 'transition.slideLeftOut', duration: 800}}>
-          {(this.state.pageIndex>0) ? <Arrow nextprevPage={this.nextprevPage} pageIndex={this.state.pageIndex} direction='left'/> : undefined}
-        </VelocityTransitionGroup>
-        <VelocityTransitionGroup>
-          {(this.state.pageIndex<3) ? <Arrow nextprevPage={this.nextprevPage} pageIndex={this.state.pageIndex} direction='right'/> : undefined}
-        </VelocityTransitionGroup>
+      <MuiThemeProvider>
+        <div
+        onKeyPress={(e)=>{console.log(e.key);}}
+        onMouseMove={(e)=>{this.refs.mountains.animation(e);
+                           this.refs.stars.animation(e);}}>
+          <Stars ref="stars"/>
+          <Stars/>
+          <Mountains ref="mountains"/>
+          {mist}
+          <Navigation pageChange={this.pageChange}/>
+          <VelocityTransitionGroup enter={{animation: 'transition.expandIn', duration: 600}} leave={{animation: 'transition.slideLeftOut', duration: 800}}>
+            {(this.state.pageIndex>0) ? <Arrow ref={(leftArrow)=>{this.leftArrow = leftArrow}} nextprevPage={this.nextprevPage} pageIndex={this.state.pageIndex} direction='left'/> : undefined}
+          </VelocityTransitionGroup>
+          <VelocityTransitionGroup>
+            {(this.state.pageIndex<3) ? <Arrow ref={(rightArrow)=>{this.rightArrow = rightArrow}} nextprevPage={this.nextprevPage} pageIndex={this.state.pageIndex} direction='right'/> : undefined}
+          </VelocityTransitionGroup>
 
-        <div id="contents">
-            <ContentPicker pageIndex={this.state.pageIndex}/>
+          <div id="contents">
+              <ContentPicker pageIndex={this.state.pageIndex}/>
+          </div>
+          {this.state.mobile ? undefined : <SnackBarCustom/>}
         </div>
-      </div>
+      </MuiThemeProvider>
     );
   }
 
