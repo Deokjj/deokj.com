@@ -16,22 +16,9 @@ import toiletnotatrashcan from '../assets/toiletnotatrashcan.png';
 class TiltOrDiv extends Component {
   constructor(props) {
     super(props);
-    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-    const isMobile = (typeof window.orientation !== 'undefined') ||  navigator.userAgent.match(/Android/i)
-                                                                 || navigator.userAgent.match(/webOS/i)
-                                                                 || navigator.userAgent.match(/iPhone/i)
-                                                                 || navigator.userAgent.match(/iPad/i)
-                                                                 || navigator.userAgent.match(/iPod/i)
-                                                                 || navigator.userAgent.match(/BlackBerry/i)
-                                                                 || navigator.userAgent.match(/Windows Phone/i);
+    const isMobile = props.browser.isMobile;
+    const tiltOption = props.browser.tiltOption;
 
-    const tiltOption = (isMobile) ? undefined : {
-       max:            (isChrome) ? 30 : 0,     // max tilt rotation (degrees)
-       perspective:    (isChrome) ? 1000 : 0,   // Transform perspective, the lower the more extreme the tilt gets.
-       scale:          1.05,      // 2 = 200%, 1.5 = 150%, etc..
-       speed:          1000,    // Speed of the enter/exit transition
-       transition:     false,   // Set a transition on enter/exit.
-     }
     this.state={
       isMobile: isMobile,
       tiltOption: tiltOption
@@ -56,13 +43,33 @@ class TiltOrDiv extends Component {
 }
 
 
-
 class Works extends Component {
   constructor(props){
     super(props);
+    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    const isMobile = (typeof window.orientation !== 'undefined') ||  navigator.userAgent.match(/Android/i)
+                                                                 || navigator.userAgent.match(/webOS/i)
+                                                                 || navigator.userAgent.match(/iPhone/i)
+                                                                 || navigator.userAgent.match(/iPad/i)
+                                                                 || navigator.userAgent.match(/iPod/i)
+                                                                 || navigator.userAgent.match(/BlackBerry/i)
+                                                                 || navigator.userAgent.match(/Windows Phone/i);
+
+    const tiltOption = (isMobile) ? undefined : {
+      max:            (isChrome) ? 30 : 0,     // max tilt rotation (degrees)
+      perspective:    (isChrome) ? 1000 : 0,   // Transform perspective, the lower the more extreme the tilt gets.
+      scale:          1.05,      // 2 = 200%, 1.5 = 150%, etc..
+      speed:          1000,    // Speed of the enter/exit transition
+      transition:     false,   // Set a transition on enter/exit.
+    }
+    
     this.state={
       clicked : false,
       selected : '',
+      browser:{
+        isMobile: isMobile,
+        tiltOption: tiltOption
+      }
     }
   }
 
@@ -245,31 +252,31 @@ class Works extends Component {
       <div className = "works" style={{zIndex: (this.state.clicked) ? 401 : 4}}>
         <VelocityTransitionGroup enter={{animation: "transition.flipYIn", duration: 700, delay:0}} runOnMount={true}>
           <h2>
-            What Ive <span className="highlight">Worked</span> On:
+            What I've <span className="highlight">Worked</span> On:
           </h2>
         </VelocityTransitionGroup>
         <div className="flex projectList">
-          <TiltOrDiv>
+          <TiltOrDiv browser={this.state.browser}>
             <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:300}} runOnMount={true}>
               <img className="projectImg" src = {deokjdotcom} alt="" onClick={(e)=>{this.projectSelect('deokjae');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
-          <TiltOrDiv>
+          <TiltOrDiv browser={this.state.browser}>
             <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:500}} runOnMount={true}>
               <img className="projectImg" src = {madClock} alt="" onClick={(e)=>{this.projectSelect('madClock');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
-          <TiltOrDiv>
+          <TiltOrDiv browser={this.state.browser}>
             <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:700}} runOnMount={true}>
               <img className="projectImg" src = {tingrindr} alt="" onClick={(e)=>{this.projectSelect('tingrindr');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
-          <TiltOrDiv>
+          <TiltOrDiv browser={this.state.browser}>
             <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:900}} runOnMount={true}>
               <img className="projectImg" src = {copWatch} alt="" onClick={(e)=>{this.projectSelect('copwatch');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
-          <TiltOrDiv>
+          <TiltOrDiv browser={this.state.browser}>
             <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay: 1100}} runOnMount={true}>
               <img className="projectImg" src = {toiletnotatrashcan} alt="" onClick={(e)=>{this.projectSelect('toilet');}}/>
             </VelocityTransitionGroup>

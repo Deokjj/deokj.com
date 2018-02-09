@@ -3,6 +3,8 @@ import './Navigation.css';
 import $ from "jquery";
 // import 'velocity-animate';
 // import 'velocity-animate/velocity.ui';
+import resume from '../assets/resume.pdf';
+
 
 
 class Navigation extends Component {
@@ -39,7 +41,7 @@ class Navigation extends Component {
           <li className="nav__items"><a onClick={()=>{this.changeIndex(2)}}>Works</a></li>
           <li className="nav__items"><a onClick={()=>{this.changeIndex(3)}}>Contact</a></li>
           <li className="nav__items">
-            <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1gr8H5VQG7BO5nfGBhb4aGeLPZd8bK-QZ1XLHnYe-5lc/edit?rm=minimal">Resume</a>
+            <a target="_blank" rel="noopener noreferrer" href={resume}>Resume</a>
           </li>
         </ul>
         </nav>

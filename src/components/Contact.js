@@ -9,6 +9,7 @@ import Send from 'material-ui/svg-icons/content/send';
 import GithubIcon from 'react-icons/lib/fa/github';
 import LinkedInIcon from 'react-icons/lib/fa/linkedin-square';
 import EmailIcon from 'react-icons/lib/md/email';
+import resume from '../assets/resume.pdf';
 
 
 class Contact extends Component{
@@ -115,7 +116,7 @@ class Contact extends Component{
                 <EmailIcon className="socialIcon"/>
               </a>
             </div>
-            <h5 className="resume"><a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/document/d/1gr8H5VQG7BO5nfGBhb4aGeLPZd8bK-QZ1XLHnYe-5lc/edit?rm=minimal">View My <span  className="highlight">Resume</span></a>
+            <h5 className="resume"><a target="_blank" rel="noopener noreferrer" href={resume}>View My <span  className="highlight">Resume</span></a>
             </h5>
           </div>
           </VelocityTransitionGroup>
