@@ -257,32 +257,27 @@ class Works extends Component {
         </VelocityTransitionGroup>
         <div className="flex projectList">
           <TiltOrDiv browser={this.state.browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:200}} runOnMount={true}>
-              <img className="projectImg"/>
-            </VelocityTransitionGroup>
-          </TiltOrDiv>
-          <TiltOrDiv browser={this.state.browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:400}} runOnMount={true}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:300}} runOnMount={true}>
               <img className="projectImg" src = {deokjdotcom} alt="" onClick={(e)=>{this.projectSelect('deokjae');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={this.state.browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:600}} runOnMount={true}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:500}} runOnMount={true}>
               <img className="projectImg" src = {madClock} alt="" onClick={(e)=>{this.projectSelect('madClock');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={this.state.browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:800}} runOnMount={true}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:700}} runOnMount={true}>
               <img className="projectImg" src = {tingrindr} alt="" onClick={(e)=>{this.projectSelect('tingrindr');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={this.state.browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:1000}} runOnMount={true}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:900}} runOnMount={true}>
               <img className="projectImg" src = {copWatch} alt="" onClick={(e)=>{this.projectSelect('copwatch');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={this.state.browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay: 1200}} runOnMount={true}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay: 1100}} runOnMount={true}>
               <img className="projectImg" src = {toiletnotatrashcan} alt="" onClick={(e)=>{this.projectSelect('toilet');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
