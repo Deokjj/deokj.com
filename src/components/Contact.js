@@ -106,17 +106,17 @@ class Contact extends Component{
           <VelocityTransitionGroup enter={{animation: "transition.slideRightIn", duration: 700, delay:0}} runOnMount={true}>
           <div className="contactRight">
             <div className="socialIconFlex">
-              <a href="http://github.com/Deokjj">
+              <a target="_blank" rel="noopener noreferrer" href="http://github.com/Deokjj">
                 <GithubIcon className="socialIcon"/>
               </a>
-              <a href="http://linkedin.com/in/deokj">
+              <a target="_blank" rel="noopener noreferrer" href="http://linkedin.com/in/deokj">
                 <LinkedInIcon className="socialIcon"/>
               </a>
               <a href="mailto:deokjj@gmail.com">
                 <EmailIcon className="socialIcon"/>
               </a>
             </div>
-            <h5 className="resume"><a target="_blank" rel="noopener noreferrer" href={resume}>View My <span  className="highlight">Resume</span></a>
+            <h5 className="resume"><a target="_blank" href={resume}>View My <span  className="highlight">Resume</span></a>
             </h5>
           </div>
           </VelocityTransitionGroup>

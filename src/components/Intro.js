@@ -18,9 +18,9 @@ class Intro extends Component {
           </h2>
           <h5 className="introContents">
             Hi! I studied <span className='highlight'>Computer Science</span> at The University of Miami 🙌.<br/>
-            My interests are <span className='highlight'>Web Development</span> and <span className='highlight'>Data Science.</span><br/>
+            My interests are <span className='highlight'>Web Development</span> and <span className='highlight'>UX/UI.</span><br/>
             Recently, I worked as a <span className='highlight'>Frontend developer</span> at <span className='highlight'>Protobrand</span>.<br/>
-            I am currently looking for fulltime or internship opportunities!
+            I am currently looking for fulltime opportunities!
           </h5>
         </VelocityTransitionGroup>
         <VelocityTransitionGroup enter={{animation: "transition.slideRightBigIn", duration: 700, delay:0}} runOnMount={true}>

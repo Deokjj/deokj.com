@@ -252,7 +252,7 @@ class Works extends Component {
       <div className = "works" style={{zIndex: (this.state.clicked) ? 401 : 4}}>
         <VelocityTransitionGroup enter={{animation: "transition.flipYIn", duration: 700, delay:0}} runOnMount={true}>
           <h2>
-            What I've <span className="highlight">Worked</span> On:
+            Take a look at My <span className="highlight">Projects.</span>
           </h2>
         </VelocityTransitionGroup>
         <div className="flex projectList">
