@@ -7,6 +7,7 @@ import CodeIcon from 'react-icons/lib/md/code';
 import YoutubeIcon from 'react-icons/lib/fa/youtube-play';
 import DesktopIcon from 'react-icons/lib/md/desktop-windows';
 
+import room360 from '../assets/room360.png';
 import deokjdotcom from '../assets/deokjdotcom.png';
 import madClock from '../assets/madClock.gif';
 import tingrindr from '../assets/tingrindr.png';
@@ -91,13 +92,40 @@ class Works extends Component {
     let snackBarMsg = (<h4>This Project Description has not been updated yet.</h4>);
     let openedImg;
 
-    if(this.state.selected === 'deokjae'){
+    if(this.state.selected === 'room360'){
+      openedImg = (<img className="projectImg openImg" src = {room360} alt="project img appears here/may be loading"/>);
+      snackBarMsg = (
+        <div>
+          <h4 className="highlight">Room360</h4>
+          <h5>Buttonless/mouseless interactivity, 3D view & Live video processing.</h5>
+          <h5>Three Js (WebGl framework library) and BRFv4 (face tracking Javascript library).</h5>
+          <RaisedButton
+            onClick ={(e)=>{e.stopPropagation();}}
+            href="https://github.com/Deokjj/room-360"
+            target="_blank"
+            label="View Codes"
+            icon={<CodeIcon />}
+          />
+          <span className="btnPadding"></span>
+          <RaisedButton
+            onClick ={(e)=>{e.stopPropagation();}}
+            href="https://cityroom360.firebaseapp.com/"
+            target="_blank"
+            label="Try It"
+            backgroundColor="#1db954"
+            labelStyle={{color: '#ecebe8'}}
+            icon={<DesktopIcon />}
+          />
+        </div>
+      )
+    }
+    else if(this.state.selected === 'deokjae'){
       openedImg = (<img className="projectImg openImg" src = {deokjdotcom} alt="project img appears here/may be loading"/>);
       snackBarMsg = (
         <div>
           <h4 className="highlight">Deokj.com</h4>
           <h5>The Website you are on right now!</h5>
-          <h5>ReactJS posted on Firebase</h5>
+          <h5>ReactJS deployed with Firebase</h5>
           <RaisedButton
             onClick ={(e)=>{e.stopPropagation();}}
             href="https://github.com/Deokjj/deokj.com"
@@ -257,27 +285,32 @@ class Works extends Component {
         </VelocityTransitionGroup>
         <div className="flex projectList">
           <TiltOrDiv browser={this.state.browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:300}} runOnMount={true}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:200}} runOnMount={true}>
+              <img className="projectImg" src = {room360} alt="" onClick={(e)=>{this.projectSelect('room360');}}/>
+            </VelocityTransitionGroup>
+          </TiltOrDiv>
+          <TiltOrDiv browser={this.state.browser}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:400}} runOnMount={true}>
               <img className="projectImg" src = {deokjdotcom} alt="" onClick={(e)=>{this.projectSelect('deokjae');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={this.state.browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:500}} runOnMount={true}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:600}} runOnMount={true}>
               <img className="projectImg" src = {madClock} alt="" onClick={(e)=>{this.projectSelect('madClock');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={this.state.browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:700}} runOnMount={true}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:800}} runOnMount={true}>
               <img className="projectImg" src = {tingrindr} alt="" onClick={(e)=>{this.projectSelect('tingrindr');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={this.state.browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:900}} runOnMount={true}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:1000}} runOnMount={true}>
               <img className="projectImg" src = {copWatch} alt="" onClick={(e)=>{this.projectSelect('copwatch');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={this.state.browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay: 1100}} runOnMount={true}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay: 1200}} runOnMount={true}>
               <img className="projectImg" src = {toiletnotatrashcan} alt="" onClick={(e)=>{this.projectSelect('toilet');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
