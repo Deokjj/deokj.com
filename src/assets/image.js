@@ -9,6 +9,7 @@ export const logos = {
 
 export const projectImages = {
   playground:   require('./playgroundComp.png'),
+  btc:          require('./btc.png'),
   room360 :     require('./room360.gif'),
   deokjdotcom : require('./deokjdotcom.png'),
   madClock :    require('./madClock.gif'),

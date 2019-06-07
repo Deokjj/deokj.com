@@ -8,7 +8,7 @@ import YoutubeIcon from 'react-icons/lib/fa/youtube-play';
 import DesktopIcon from 'react-icons/lib/md/desktop-windows';
 
 import { projectImages } from '../assets/image';
-const { playground, room360, deokjdotcom, madClock, tingrindr, copWatch, toiletnotatrashcan} = projectImages;
+const { playground, btc, room360, deokjdotcom, madClock, tingrindr, copWatch, toiletnotatrashcan} = projectImages;
 
 class TiltOrDiv extends Component {
   render() {
@@ -87,6 +87,50 @@ class Works extends Component {
           <h5>Video comparison app that allows a user upload and play videos all at once or individually. <br/> I also worked on NYSCI Playground Chrome main app!</h5>
           <h5>ReactJS, Material UI</h5>
           <span className='highlight' style={{fontWeight: 900, fontSize: 16, padding: '8px 0'}}> Unfortunately, this app is not available for public. I am happy to demonstrate this in person! </span>
+        </div>
+      )
+    }
+    else if(this.state.selected === 'btc'){
+      openedImg = (<img className="projectImg openImg" src = {btc} alt="project img appears here/may be loading"/>);
+      snackBarMsg = (
+        <div>
+          <h4 className="highlight">BTC exchange</h4>
+          <h5>Real time Bitcoin exchange rate</h5>
+          <h5>React, Express, Coinbase API, Firebase(client), Heroku(server)</h5>
+          <div className="btnFlex">
+            <div className="btnItem">
+              <RaisedButton
+                onClick ={(e)=>{e.stopPropagation();}}
+                href="https://github.com/Deokjj/BTCPage"
+                target="_blank"
+                label="Client Codes"
+                fullWidth={true}
+                icon={<CodeIcon />}
+              />
+            </div>
+            <div className="btnItem">
+              <RaisedButton
+                onClick ={(e)=>{e.stopPropagation();}}
+                href="https://github.com/Deokjj/btc-server"
+                target="_blank"
+                label="Server Codes"
+                fullWidth={true}
+                icon={<CodeIcon />}
+              />
+            </div>
+            <div className="btnItem">
+              <RaisedButton
+                onClick ={(e)=>{e.stopPropagation();}}
+                href="https://btc-client-app.firebaseapp.com"
+                target="_blank"
+                label="Try It"
+                fullWidth={true}
+                backgroundColor="#1db954"
+                labelStyle={{color: '#ecebe8'}}
+                icon={<DesktopIcon />}
+              />
+            </div>
+          </div>
         </div>
       )
     }
@@ -289,31 +333,36 @@ class Works extends Component {
           </TiltOrDiv>
           <TiltOrDiv browser={browser}>
             <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:300}} runOnMount={true}>
-              <img className="projectImg" src = {room360} alt="" onClick={(e)=>{this.projectSelect('room360');}}/>
+              <img className="projectImg" src = {btc} alt="" onClick={(e)=>{this.projectSelect('btc');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={browser}>
             <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:450}} runOnMount={true}>
-              <img className="projectImg" src = {deokjdotcom} alt="" onClick={(e)=>{this.projectSelect('deokjae');}}/>
+              <img className="projectImg" src = {room360} alt="" onClick={(e)=>{this.projectSelect('room360');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={browser}>
             <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:600}} runOnMount={true}>
-              <img className="projectImg" src = {madClock} alt="" onClick={(e)=>{this.projectSelect('madClock');}}/>
+              <img className="projectImg" src = {deokjdotcom} alt="" onClick={(e)=>{this.projectSelect('deokjae');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={browser}>
             <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:750}} runOnMount={true}>
-              <img className="projectImg" src = {tingrindr} alt="" onClick={(e)=>{this.projectSelect('tingrindr');}}/>
+              <img className="projectImg" src = {madClock} alt="" onClick={(e)=>{this.projectSelect('madClock');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={browser}>
             <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:900}} runOnMount={true}>
+              <img className="projectImg" src = {tingrindr} alt="" onClick={(e)=>{this.projectSelect('tingrindr');}}/>
+            </VelocityTransitionGroup>
+          </TiltOrDiv>
+          <TiltOrDiv browser={browser}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay:1050}} runOnMount={true}>
               <img className="projectImg" src = {copWatch} alt="" onClick={(e)=>{this.projectSelect('copwatch');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
           <TiltOrDiv browser={browser}>
-            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay: 1050}} runOnMount={true}>
+            <VelocityTransitionGroup enter={{animation: 'transition.perspectiveUpIn', delay: 1200}} runOnMount={true}>
               <img className="projectImg" src = {toiletnotatrashcan} alt="" onClick={(e)=>{this.projectSelect('toilet');}}/>
             </VelocityTransitionGroup>
           </TiltOrDiv>
