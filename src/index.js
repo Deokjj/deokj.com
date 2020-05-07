@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import App from './App';
+import OldApp from './version0/App';
 
-const Temp = () => <p> updating... </p>
-
-ReactDOM.render(<Temp/>, document.getElementById('root'));
-registerServiceWorker();
+ReactDOM.render(<OldApp/>, document.getElementById('root'));
