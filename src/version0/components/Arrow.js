@@ -37,7 +37,7 @@ class Arrow extends Component {
   render(){
     if(this.props.direction === 'left')
       return(
-        <a onClick={()=>{this.nextprevPage('prev'); this.rightClick()}} className="c-arrow c-arrow--left u-absolute">
+        <div onClick={()=>{this.nextprevPage('prev'); this.rightClick()}} className="c-arrow c-arrow--left u-absolute">
         <span className="c-arrow__mode c-arrow__mode--default u-absolute u-block u-overflow-h">
         <span className="c-arrow__circle u-absolute u-block u-pos-tl u-fit u-overflow-h">
         </span>
@@ -54,11 +54,11 @@ class Arrow extends Component {
         </span>
         </span>
         </span>
-        </a>
+        </div>
       );
     else if(this.props.direction === 'right')
       return(
-        <a onClick={()=>{this.nextprevPage('next'); this.rightClick()}} className="c-arrow c-arrow--right u-absolute">
+        <div onClick={()=>{this.nextprevPage('next'); this.rightClick()}} className="c-arrow c-arrow--right u-absolute">
         <span className="c-arrow__mode c-arrow__mode--default u-absolute u-block u-overflow-h">
         <span className="c-arrow__circle u-absolute u-block u-pos-tl u-fit u-overflow-h">
         </span>
@@ -75,7 +75,7 @@ class Arrow extends Component {
         </span>
         </span>
         </span>
-        </a>
+        </div>
       );
     else return undefined;
   }

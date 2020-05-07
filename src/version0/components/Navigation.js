@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import './Navigation.css';
 import $ from "jquery";
-// import 'velocity-animate';
-// import 'velocity-animate/velocity.ui';
-import resume from '../assets/resume.pdf';
-
-
 
 class Navigation extends Component {
   constructor(props){
@@ -36,12 +31,12 @@ class Navigation extends Component {
         </div>
         <nav className="nav" onClick={this.toggleNav}>
         <ul>
-          <li className="nav__items"><a onClick={()=>{this.changeIndex(0)}}>Home</a></li>
-          <li className="nav__items"><a onClick={()=>{this.changeIndex(1)}}>About Me</a></li>
-          <li className="nav__items"><a onClick={()=>{this.changeIndex(2)}}>Works</a></li>
-          <li className="nav__items"><a onClick={()=>{this.changeIndex(3)}}>Contact</a></li>
+          <li className="nav__items"><span onClick={()=>{this.changeIndex(0)}}>Home</span></li>
+          <li className="nav__items"><span onClick={()=>{this.changeIndex(1)}}>About Me</span></li>
+          <li className="nav__items"><span onClick={()=>{this.changeIndex(2)}}>Works</span></li>
+          <li className="nav__items"><span onClick={()=>{this.changeIndex(3)}}>Contact</span></li>
           <li className="nav__items">
-            <a target="_blank" rel="noopener noreferrer" href={resume}>Resume</a>
+            <a target="_blank" rel="noopener noreferrer" href='https://drive.google.com/file/d/12IWT6BrpOIXidTcYHYeSX2ndFnZfZ_Tc/view'>Resume</a>
           </li>
         </ul>
         </nav>

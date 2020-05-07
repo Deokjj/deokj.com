@@ -9,7 +9,6 @@ import Send from 'material-ui/svg-icons/content/send';
 import GithubIcon from 'react-icons/lib/fa/github';
 import LinkedInIcon from 'react-icons/lib/fa/linkedin-square';
 import EmailIcon from 'react-icons/lib/md/email';
-import resume from '../assets/resume.pdf';
 
 
 class Contact extends Component{
@@ -116,7 +115,7 @@ class Contact extends Component{
                 <EmailIcon className="socialIcon"/>
               </a>
             </div>
-            <h5 className="resume"><a target="_blank" href={resume}>View My <span  className="highlight">Resume</span></a>
+            <h5 className="resume"><a target="_blank" href="https://drive.google.com/file/d/12IWT6BrpOIXidTcYHYeSX2ndFnZfZ_Tc/view" rel="noopener noreferrer">View My <span  className="highlight">Resume</span></a>
             </h5>
           </div>
           </VelocityTransitionGroup>
@@ -131,13 +130,4 @@ class Contact extends Component{
   }
 }
 
-// <Checkbox
-//   className="anonymousCheckBox"
-//   checkedIcon={<ActionFavorite style={{fill: '#1db954'}}/>}
-//   uncheckedIcon={<ActionFavoriteBorder style={{fill: '#d4d3d0'}}/>}
-//   iconStyle={{color: '#1db954'}}
-//   label="Anonymous Feedback"
-//   labelStyle={{color: this.state.checkBoxLabelColor, fontSize: '0.7em'}}
-//   onCheck={this.updateCheck.bind(this)}
-// />
 export default Contact

@@ -44,7 +44,7 @@
   top:35px;
   opacity:0;
 }
-.nav__items a {
+.nav__items span {
   text-decoration: none;
   color:#ecebe8;
   font-weight: 300;
@@ -55,7 +55,7 @@
   cursor: pointer;
 }
 
-.nav__items a:after {
+.nav__items span:after {
   display:block;
   content: '';
   padding-bottom:5px;
@@ -63,7 +63,7 @@
   transform: scaleX(0.0001);
   transition: transform 350ms ease-in-out;
 }
-.nav__items a:hover:after {
+.nav__items span:hover:after {
   transform: scaleX(.1);
 }
 
