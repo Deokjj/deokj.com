@@ -8,7 +8,7 @@ export default class App extends React.Component {
     
     async componentDidMount() {
         // load pdf.js script:
-        const pdfPromise = new Promise((response,reject) => {
+        const pdfPromise = new Promise((resolve) => {
             const script = document.createElement('script');
             script.src = '//mozilla.github.io/pdf.js/build/pdf.js';
             script.async = true;
@@ -19,12 +19,11 @@ export default class App extends React.Component {
             };
             const onLoad = () => {
                 removeScriptEvents();
-                console.log('loaded');
-                response(true);
+                resolve(true);
             }
             const onError = () => {
                 removeScriptEvents();
-                reject('error occurred during script load.');
+                resolve(false);
             }
             
             script.addEventListener('load', onLoad);
@@ -32,17 +31,29 @@ export default class App extends React.Component {
 
             document.body.appendChild(script);
         });
+        
+        // Fetch resume from server
+        const fetchResumePromise = new Promise((resolve) => {
+            const url = 'https://us-central1-deokjdotcom.cloudfunctions.net/app';
 
-        await pdfPromise;
+            fetch(url)
+            .then(response => response.blob())
+            .then( blob => resolve(blob))
+            .catch((e) => resolve(false));
+        })
+
+        const [ pdfJsLoaded, blob ] = await Promise.all([pdfPromise, fetchResumePromise]);
+        if(!pdfJsLoaded || !blob) return; // failed loading pdfJs or resume.
 
         // instance to access pdf.js
         const pdfjsLib = window['pdfjs-dist/build/pdf'];
         pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
 
-        const url = 'https://cors-anywhere.herokuapp.com/' + 'https://drive.google.com/uc?export=download&id=12IWT6BrpOIXidTcYHYeSX2ndFnZfZ_Tc';
+        // get a url reference for the blob
+        const blobUrl = URL.createObjectURL(blob);
 
-        pdfjsLib.getDocument(url).promise.then((pdf) => {
-            console.log('page loaded');
+        // render pdf
+        pdfjsLib.getDocument(blobUrl).promise.then((pdf) => {
 
             pdf.getPage(1).then((page) => {
                 const scale = 1.5;
@@ -58,7 +69,7 @@ export default class App extends React.Component {
                     canvasContext: context,
                     viewport: viewport
                 };
-                page.render(renderContext).promise.then(() => 'page rendered');
+                page.render(renderContext);
             });
         })
     }

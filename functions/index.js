@@ -29,7 +29,8 @@ exports.app = functions.https.onRequest( async (request, response) => {
     response.writeHead(200, {
         'Content-Type': 'application/pdf',
         'Content-Disposition': 'attachment; filename=resume.pdf',
-        'Content-Length': data.length
+        'Content-Length': data.length,
+        'Access-Control-Allow-Origin': '*'
     });
     response.end(data);
 });
