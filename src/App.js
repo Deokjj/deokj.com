@@ -13,7 +13,7 @@ export default class App extends React.Component {
                 </Box>
                 <Box mt={1}>
                     <Typography variant="subtitle2">
-                        Please scroll down if you'd like to view previous portfolio (Last updated on Fab 2019)
+                        Link to previous portfolio is on the bottom of the page
                     </Typography>
                 </Box>
                 <MyResume />
@@ -26,7 +26,7 @@ export default class App extends React.Component {
                     href="/v0"
                     target="_blank"
                     > 
-                        Go to Version 0 (last updated on Fab 2019)
+                        Go to previous portfolio (last updated on Fab 2019)
                     </Button>
                 </Box>
             </Box>
