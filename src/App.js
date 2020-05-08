@@ -1,6 +1,6 @@
 import React from 'react';
 import MyResume from './MyResume';
-import { Container, Button, Typography, Box } from '@material-ui/core';
+import { Button, Typography, Box } from '@material-ui/core';
 
 export default class App extends React.Component {
     render() {
@@ -8,7 +8,7 @@ export default class App extends React.Component {
             <Box style={{textAlign:'center'}}>
                 <Box mt={2.5}>
                     <Typography variant="h5">
-                        This website is being revamped 🤗
+                        This website is being revamped <span role="img" aria-label="hug emoji">🤗</span>
                     </Typography>
                 </Box>
                 <Box mt={1}>
