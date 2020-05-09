@@ -26,7 +26,7 @@ export default class App extends React.Component {
                     href="/v0"
                     target="_blank"
                     > 
-                        Go to previous portfolio (last updated on Fab 2019)
+                        Go to previous portfolio (last updated on Feb 2019)
                     </Button>
                 </Box>
             </Box>
